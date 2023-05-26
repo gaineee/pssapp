@@ -20,7 +20,7 @@ interface props {
   category: string;
 }
 
-export const ExistingFAQ = ({num, place, category}: props) => { // 4, all, all
+const ExistingFAQ = ({num, place, category}: props) => { // 4, all, all
   const [clicked, setClicked] = useState<boolean>(false);
 
   const FAQWrap = styled.div`
@@ -30,27 +30,47 @@ export const ExistingFAQ = ({num, place, category}: props) => { // 4, all, all
 
   if (place == 'all' && category == 'all') {
     let len = data.length;
+    let FAQarr: Array<JSX.Element> = [];
     
-    //data.forEach((v, i) => {
-      return (
+
+    data.forEach((v, i:number) => {
+      /*
+      let f = 
         <FAQWrap>
-          <span>[{data[0].place} &gt; {data[0].category}]</span>
+          <span>[{data[i].place} &gt; {data[0].category}]</span>
           <button>{clicked=== false ? "▽" : "△"} </button>
       
-          <div>Q. {data[0].question} </div>
-          <div>A. {data[0].answer} </div>
+          <div>Q. {data[i].question} </div>
+          <div>A. {data[i].answer} </div>
         </FAQWrap>
+      FAQarr.push(f);
+      */
+     return(
+      <FAQWrap>
+          <span>[{data[i].place} &gt; {data[i].category}]</span>
+          <button>{clicked=== false ? "▽" : "△"} </button>
+      
+          <div>Q. {data[i].question} </div>
+          <div>A. {data[i].answer} </div>
+      </FAQWrap>
       )
-  }
+     })
+    } else {
+      return (
+        <>
+          <div>dafsdf</div>
+        </>
+      )
+    }
    // })
   //} else {
     //  return (
     //    <>
     //    </>
       //)
-  //}
+  }
   
-}
+//}
 
 /*
 const Ex = (props: props) => {
@@ -75,4 +95,4 @@ const Ex = (props: props) => {
 }
 */
 
-//export default ExistingFAQ
+export default ExistingFAQ;

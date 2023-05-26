@@ -7,7 +7,7 @@ import React, {
 import ReactDOM from 'react-dom/client';
 import styled from "styled-components";
 
-import {ExistingFAQ} from "./ExistingFaq";
+import ExistingFAQ from "./ExistingFaq";
 //import { data } from "./FAQdata";
 
 interface Props {
@@ -171,7 +171,7 @@ export const FAQ = () => {
       <br/>
       <InputKeyword />
       <InputPlace />
-      <ExistingFAQ num={num} place={place} category={category}></ExistingFAQ>
+      <ExistingFAQ place={place} category={category}></ExistingFAQ>
       <br/>
 
     </FAQcontainer>
