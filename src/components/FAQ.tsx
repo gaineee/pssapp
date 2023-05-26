@@ -3,11 +3,12 @@ import React, {
   MouseEventHandler,
   useState,
 } from "react";
+
 import ReactDOM from 'react-dom/client';
 import styled from "styled-components";
-import "./FAQ.css";
-import ExistingFaq from "./ExistingFaq";
-import { data } from "./FAQdata";
+
+import {ExistingFAQ} from "./ExistingFaq";
+//import { data } from "./FAQdata";
 
 interface Props {
   place: string;
@@ -141,14 +142,17 @@ const InputPlace = () => {
 export const FAQ = () => {
   // 깃허브 커밋 git commit -m "message" / 푸쉬 git push
 
-  const [place, setPlace] = useState<string>("HOTEL PARADISE");
-  const [category, setCategory] = useState<string>("이용안내");
+  const num = 3;
+  const [place, setPlace] = useState<string>('all');
+  const [category, setCategory] = useState<string>("all");
 
+  /*
   const [id, setId] = useState<number>(data[0].id);
   const [p, setp] = useState<string>(data[0].place);
   const [c, setc] = useState<string>(data[0].category);
   const [q, setq] = useState<string>(data[0].question);
   const [a, seta] = useState<string>(data[0].answer);
+  */
 
   const FAQcontainer = styled.div`
     width: 400px;
@@ -167,7 +171,7 @@ export const FAQ = () => {
       <br/>
       <InputKeyword />
       <InputPlace />
-      <ExistingFaq id={id} place={p} category={c} question={q} answer={a}></ExistingFaq>
+      <ExistingFAQ num={num} place={place} category={category}></ExistingFAQ>
       <br/>
 
     </FAQcontainer>
