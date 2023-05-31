@@ -175,6 +175,13 @@ export const FAQ = () => {
     padding-right: 30px;
     font-size: 15px;
   `
+  
+  const Footer = styled.p`
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 14px;
+    text-align: left;
+  `
 
   return (
     <FAQcontainer>
@@ -192,6 +199,8 @@ export const FAQ = () => {
       } </FAQWrap>
       <br/>
       <ShowMore>더보기</ShowMore>
+      <br/><br/>
+      <Footer>원하는 답변을 찾지 못하셨나요?<br/><a href="./QNA.tsx">Q&A</a>를 통해 질문을 해 주시면 빠른 시간 안에 답변을 드리도록 하겠습니다. (전화 상담: 1833-8855)</Footer>
     </FAQcontainer>
   );
 };
