@@ -8,7 +8,7 @@ import ReactDOM from 'react-dom/client';
 import styled from "styled-components";
 
 import ExistingFAQ from "./ExistingFaq";
-//import { data } from "./FAQdata";
+import { data } from "./FAQdata";
 
 interface Props {
   place: string;
@@ -142,8 +142,8 @@ const InputPlace = () => {
 export const FAQ = () => {
   // 깃허브 커밋 git commit -m "message" / 푸쉬 git push
 
-  const num = 3;
-  const [place, setPlace] = useState<string>('all');
+  const num = 4; // 처음 화면에서 보여줄 qna 개수
+  const [place, setPlace] = useState<string>('all'); // 기본값o, 사용자 선택에 따라
   const [category, setCategory] = useState<string>("all");
 
   /*
@@ -163,6 +163,18 @@ export const FAQ = () => {
       padding-right: 30px;
     }
   `
+  const ShowMore = styled.button`
+    width: 88%;
+    height: 20px;
+    background-color: #9c836a;
+    border: none;
+    color: white;
+  `
+  const FAQWrap = styled.div`
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 15px;
+  `
 
   return (
     <FAQcontainer>
@@ -171,9 +183,15 @@ export const FAQ = () => {
       <br/>
       <InputKeyword />
       <InputPlace />
-      <ExistingFAQ place={place} category={category}></ExistingFAQ>
+      <FAQWrap> {
+        data.map((v, i) => {
+          return (
+            <ExistingFAQ id={v.id} place={v.place} category={v.category}></ExistingFAQ>
+          )
+        })
+      } </FAQWrap>
       <br/>
-
+      <ShowMore>더보기</ShowMore>
     </FAQcontainer>
   );
 };

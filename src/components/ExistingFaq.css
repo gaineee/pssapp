@@ -1,0 +1,21 @@
+.FAQborder {
+  background-color: #eeece1;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: left;
+  padding: 3px 5px 3px 5px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.answer {
+  font-size: 14px;
+}
+
+.answer.active {
+  display: none;
+}

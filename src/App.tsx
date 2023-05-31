@@ -9,6 +9,7 @@ import "./App.css";
 import { H1 } from "./styled";
 import { Navbar } from "./components/Navbar";
 
+
 function App() {
   const [header, setHeader] = useState<string>("고객지원");
   const [clicked, setClicked] = useState<number>(1);
