@@ -132,6 +132,14 @@ const InputPlace = () => {
           <li className="ListItem" onClick={SetPlace("HOTEL PARADISE", 2)}>HOTEL PARADISE</li>
           <li className="ListItem" onClick={SetPlace("HOTEL ART PARADISO", 3)}>HOTEL ART PARADISO</li>
           <li className="ListItem" onClick={SetPlace("CASINO", 4)}>CASINO</li>
+          <li className="ListItem" onClick={SetPlace("CIMER", 5)}>CIMER</li>
+          <li className="ListItem" onClick={SetPlace("CHROMA", 6)}>CHROMA</li>
+          <li className="ListItem" onClick={SetPlace("WONDERBOX", 7)}>WONDERBOX</li>
+          <li className="ListItem" onClick={SetPlace("PLAZA", 8)}>PLAZA</li>
+          <li className="ListItem" onClick={SetPlace("PARADISE ART SPACE", 9)}>PARADISE ART SPACE</li>
+          <li className="ListItem" onClick={SetPlace("STUDIO PARADISE", 10)}>STUDIO PARADISE</li>
+          <li className="ListItem" onClick={SetPlace("GROUP & WEDDINGS", 11)}>GROUP & WEDDINGS</li>
+          <li className="ListItem" onClick={SetPlace("MEMBERSHIP", 12)}>MEMBERSHIP</li>
         </ul>
       </div>
       )}
@@ -145,14 +153,6 @@ export const FAQ = () => {
   const num = 4; // 처음 화면에서 보여줄 qna 개수
   const [place, setPlace] = useState<string>('all'); // 기본값o, 사용자 선택에 따라
   const [category, setCategory] = useState<string>("all");
-
-  /*
-  const [id, setId] = useState<number>(data[0].id);
-  const [p, setp] = useState<string>(data[0].place);
-  const [c, setc] = useState<string>(data[0].category);
-  const [q, setq] = useState<string>(data[0].question);
-  const [a, seta] = useState<string>(data[0].answer);
-  */
 
   const FAQcontainer = styled.div`
     width: 400px;
