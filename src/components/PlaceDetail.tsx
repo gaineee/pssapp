@@ -38,7 +38,8 @@ placeArr = {
 
 const PlaceDetail = ( {place, value } : props)  => {
   const SelectBox = styled.select`
-    width: 260px;
+    width: 240px;
+    height: 24px;
   `
   //console.log(placeArr[2]);
   if (value == 0) {
