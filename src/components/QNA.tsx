@@ -123,6 +123,9 @@ import PlaceDetail from "./PlaceDetail";
 }
 
 const Qtype = () => {
+  const Qarr = ['문의', '칭찬', '불만', '제안', '기타'];
+  const [clickedbutton, setClickedButton] = useState<string>(Qarr[0]);
+  
   const Text = styled.div`
     display: flex;
     margin-top: 15px;
@@ -133,8 +136,11 @@ const Qtype = () => {
     display: flex;
     flex-direction: row;
     margin: 10px 30px 0 30px;
+
+    .pushed {
+      background-color: #87693c;
+    }
   `
-  
   const Qbutton = styled.button`
     width: 60px;
     height: 40px;
@@ -150,13 +156,15 @@ const Qtype = () => {
     }
   `
 
-  const Qarr = ['문의', '칭찬', '불만', '제안', '기타'];
-  const selectType = () => {
+  const selectType = (i: number) => () => {
     let $btntag = document.querySelectorAll(Qbutton);
     console.log($btntag);
-    $btntag.forEach((v,i) => {
+    setClickedButton(Qarr[i])
+
+    /* $btntag.forEach((v,idx) => {
       v.classList.add('disabled');
-  })
+    })
+  */
   }
 
   return (
@@ -164,7 +172,8 @@ const Qtype = () => {
       <Text>질문 유형</Text>
       <ButtonWrap>
         { Qarr.map((v,i) => 
-          <Qbutton onClick={selectType}>{v}</Qbutton>
+          <Qbutton onClick={selectType(i)}
+            className={ v===clickedbutton ? 'pushed' : '' }>{v}</Qbutton>
         )}
       </ButtonWrap>
     </>
@@ -172,61 +181,148 @@ const Qtype = () => {
 
 }
 
-const DetailInput = () => {
+const Detail = () => {
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
+  const [name, setName] = useState("");
+  const [phonenum, setPhonenum] = useState(["","",""]); // len!=3이면자르기
+  const [email, setEmail] = useState([]);
+
+  const changeTitle = (e: any) => {
+    setTitle(e.value);
+  }
+
+  const changeBody = (e: any) => {
+    setBody(e.value);
+  }
+
+  const changeName = (e: any) => {
+    setName(e.currentTarget.value);
+  }
+
+  const changePhonenum1 = (e: any) => {
+    phonenum[0] = e.currentTarget.value;
+  }
+
+  const changePhonenum2 = (e: any) => {
+    phonenum[1] = e.currentTarget.value;
+  }
+
+  const changePhonenum3 = (e: any) => {
+    phonenum[2] = e.currentTarget.value;
+  }
+
   const DetailInput = styled.div`
     margin-top: 20px;
     display: flex;
     flex-direction: column;
     padding-left: 30px;
     padding-right: 30px;
+    text-align: left;
+
+    input {
+      margin-top: 5px;
+      margin-bottom: 10px;
+      border: 1px solid black;
+    }
+    .inputTitle {
+      height: 25px;
+    }
+
+    .inputBody {
+      height: 100px;
+    }
+    .inputName {
+      height: 25px;
+    }
+    .inputEmail {
+      height: 25px;
+    }
+
+    div > input {
+      height: 25px;
+    }
 
   `
   const PhoneInput = styled.div`
     .firstInput {
-      width: 50px;
+      width: 80px;
     }
 
     .secondInput {
-      width: 50px;
+      width: 100px;
+      margin-left: 20px;
+      margin-right: 5px;
     }
+
     .thirdInput {
-      width: 50px;
+      width: 100px;
+      margin-left: 5px;
+      margin-right: 5px;
     }
   `
 
   return (
     <DetailInput>
       <div>제목</div>
-      <input type="text"></input>
-      <div style={{ height: "5px" }}></div>
+      <input type="text" className="inputTitle" value={title}></input>
+      
       <div>내용</div>
-      <input type="text"></input>
-      <div style={{ height: "5px" }}></div>
+      <input type="text" className="inputBody" value={body} onChange={changeBody}></input>
+      
       <div>이름</div>
-      <input type="text"></input>
-      <div style={{ height: "5px" }}></div>
+      <input type="text" className="inputName" value={name} onChange={changeName}></input>
+      
       <div>휴대폰 번호</div>
       <PhoneInput>
-        <input className="firstInput"></input>
-        <input className="secondInput"></input>
-        <input className="thirdInput"></input>
+        <input type="text" className="firstInput" maxLength={3}></input>
+        <input type="text" className="secondInput" maxLength={4}></input>
+        <input type="text" className="thirdInput" maxLength={4}></input>
       </PhoneInput>
-      <div style={{ height: "5px" }}></div>
+      
       <div>이메일 주소</div>
+      <input type="text" className="inputEmail" value={email}></input>
+
     </DetailInput>
   )
+}
+
+interface param {
+  title: string;
+  body: string;
+  name: string;
+  phonenum: number[],
+  email: string;
 }
 
 export const QNA = () => {
   const QNAWrap = styled.div`
     width: 100%;
+
+    .submit {
+      width: 100px;
+      height: 40px;
+      margin: 0 auto;
+
+      border: 2px #9c836a solid;
+      background-color: #9c836a;
+      color: white;
+      font-size: 14px;
+    }
   `
 
+  const submitvoc = () => {
+    let param: param;
+
+    console.log()
+  }
+  
   return (
     <QNAWrap>
       <PlaceNDetail></PlaceNDetail>
       <Qtype></Qtype>
-      <DetailInput></DetailInput>
+      <Detail></Detail>
+      <button className="submit" onClick={submitvoc}>제출하기</button>
     </QNAWrap>
   )
 }

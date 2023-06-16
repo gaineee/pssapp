@@ -7,6 +7,7 @@ import React, {
 import ReactDOM from 'react-dom/client';
 import styled from "styled-components";
 
+import { QNA } from "./QNA"
 import ExistingFAQ from "./ExistingFaq";
 import { data } from "./FAQdata";
 
@@ -57,8 +58,8 @@ const InputKeyword = () => {
 
 const InputPlace = () => {
   const [place, setPlace] = useState<string>("장소를 선택해 주세요");
-
   const [isOpenPlace, setIsOpenPlace] = useState<boolean>(false);
+  
   const OpenPlace = () => {
     isOpenPlace==false ? setIsOpenPlace(true) : setIsOpenPlace(false)
   }
@@ -71,18 +72,22 @@ const InputPlace = () => {
   const InputPlaceWrap = styled.div`
     padding-left: 30px;
     padding-right: 30px;
-
+ 
+    
+    
     .categoryBox {
       height: 30px;
       padding-left: 10px;
-
+      padding-top: 3px;
       border: 1px #9c836a solid;
-      display: center;
-    }
+      display: flex;
+      justify-content: space-between;
+      
 
-    .categoryBox button {
-      align-self: flex-end;
-      margin-right: 10px;
+      button {
+        height: 20px;
+      }
+      
     }
 
     #DropDownBoxWrap {
@@ -183,6 +188,26 @@ export const FAQ = () => {
     text-align: left;
   `
 
+  const DropDownImg = styled.img< {clicked: boolean }>`
+    width: 20px;
+    align-self: flex-end;
+    margin-right: 10px;
+    height: 25px;
+    transform: ${(props) => (props.clicked ? "scaleY(-1)" : "" )}`
+  
+  
+const LikeButton = () => {
+  const [liked, setLiked] = useState<boolean>(false);
+  const btnclick = () => {
+    setLiked(true);
+  }
+  return (
+    <>
+      {liked ? 'You liked this.' : <button onClick={btnclick}>Like</button> }
+    </>
+  )
+}
+
   return (
     <FAQcontainer>
       <br/>
@@ -200,7 +225,7 @@ export const FAQ = () => {
       <br/>
       <ShowMore>더보기</ShowMore>
       <br/><br/>
-      <Footer>원하는 답변을 찾지 못하셨나요?<br/><a href="./QNA.tsx">Q&A</a>를 통해 질문을 해 주시면 빠른 시간 안에 답변을 드리도록 하겠습니다. (전화 상담: 1833-8855)</Footer>
+      <Footer>원하는 답변을 찾지 못하셨나요?<br/><a>Q&A</a>를 통해 질문을 해 주시면 빠른 시간 안에 답변을 드리도록 하겠습니다. (전화 상담: 1833-8855)</Footer>
     </FAQcontainer>
   );
 };
