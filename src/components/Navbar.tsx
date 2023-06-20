@@ -1,6 +1,6 @@
 import { Navbar as Nb } from "../styled";
 import { useState } from "react";
-import "./Navbar.css";
+// import "./Navbar.css";
 
 interface Props {
   clicked: number;

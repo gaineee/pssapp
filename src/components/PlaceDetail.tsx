@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { data } from "./FAQdata";
 import styled from "styled-components";
 import "./ExistingFaq.css"
 
@@ -9,19 +8,19 @@ interface props {
 }
 
 const placeArr: string[][] = [
-  [], // idx=0 제외
-  ['객실'],
-  ['객실, 상품/이벤트', '시설', '다이닝', '기타'], //'HOTEL PARADISE'
-  ['객실'],
-  ['게임', '상품/이벤트', '카지노멤버십/포인트', '기타 서비스'], // CASINO
-  ['상품/이벤트', 'F&B', '입장권/요금', '제휴할인', '이벤트/액티비티', '기타'], // 씨메르
-  ['null'], // 크로마
-  ['시설이용', '이벤트/액티비티', '입장권/요금', 'F&B', '제휴할인', '기타'], // 원더박스
-  ['매장이용', '입점문의', '기타'], // 플라자
-  ['전시', '입장권/요금', '이벤트/액티비티', '기타'], // 아트 스페이스
+  [], // idx=0 제외 -> 항목을 선택해 주세요
+  ['이용안내', '주의사항', '기타'],  // PARADISE CITY
+  ['이용안내', '객실', 'F&B', '부대시설', '주의사항', '기타'], //'HOTEL PARADISE'
+  ['이용안내', '객실', 'F&B', '부대시설', '주의사항', '기타'],
+  ['이용안내', '게임안내', '멤버십', '주의사항', '기타'], // CASINO
+  ['이용안내', '시설안내', '이벤트', '주의사항', '기타'], // 씨메르
+  ['이용안내', '시설안내', '이벤트', '주의사항', '기타'], // 크로마
+  ['이용안내', '시설안내', '이벤트', '주의사항', '기타'], // 원더박스
+  ['매장안내', '시설안내', '이벤트', '기타'], // 플라자
+  ['이용안내', '주의사항', '기타'], // 아트 스페이스
   ['행사/이벤트', '대관', '시설', '기타'], // studio paradise
   ['견적', '서비스', '기타'], // 웨딩
-  ['파라다이스 리워즈 포인트', '파라다이스 시그니처', '크로마 VIP', '카지노', 'EVENT MEMEBERSHIP CLUB'], // 멤버십
+  ['가입안내', '포인트', '기타'], // 멤버십
 ];
 
 /*
@@ -49,11 +48,11 @@ const PlaceDetail = ( {place, value } : props)  => {
       </SelectBox>
     )
   } else {
-    //let pArr: string[] = placeArr['CASINO'];
+    //let placeArr: string[] = placeArr['CASINO'];
     return (
       <SelectBox name="detail"> 
         { placeArr[value].map((v,i) =>
-          <option value={v}>{v}</option>
+          <option value={i}>{v}</option>
         )}
       </SelectBox>
     )

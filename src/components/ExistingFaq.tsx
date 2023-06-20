@@ -9,8 +9,7 @@ interface props {
   category: string
 }
 
-
-const ExistingFAQ = ( {id, place, category} : props)  => { // id: 각 qna 항목의 유니크값
+export const ExistingFAQ = ( {id, place, category} : props)  => { // id: 각 qna 항목의 유니크값
   const [clicked, setClicked] = useState<boolean>(false);
 
   let q: string = '';
@@ -36,17 +35,15 @@ const ExistingFAQ = ( {id, place, category} : props)  => { // id: 각 qna 항목
     }
 
   }
-
+// <button>{clicked=== false ? "▽" : "△"} </button>
   return ( 
     <div className="FAQborder" onClick={toggleEvent}>
       <div className="header">
         <span>[{place} &gt; {category}]</span>
-        <button>{clicked=== false ? "▽" : "△"} </button>
       </div>
       <div>Q. {q} </div>
       <div className="answer active" id={id}>A. {a} </div>
     </div>
-    
   )
 }
 
@@ -71,4 +68,4 @@ const ExistingFAQ = ( {id, place, category} : props)  => { // id: 각 qna 항목
     )
 */
 
-export default ExistingFAQ;
+//export default ExistingFAQ;

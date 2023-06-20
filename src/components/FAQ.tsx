@@ -8,7 +8,7 @@ import ReactDOM from 'react-dom/client';
 import styled from "styled-components";
 
 import { QNA } from "./QNA"
-import ExistingFAQ from "./ExistingFaq";
+import { ExistingFAQ } from "./ExistingFaq";
 import { data } from "./FAQdata";
 
 interface Props {
@@ -63,7 +63,6 @@ const InputPlace = () => {
   const OpenPlace = () => {
     isOpenPlace==false ? setIsOpenPlace(true) : setIsOpenPlace(false)
   }
-
   const SetPlace = (val: string, idx: number) => () => {
     setPlace(val);
     setIsOpenPlace(false);
@@ -72,8 +71,6 @@ const InputPlace = () => {
   const InputPlaceWrap = styled.div`
     padding-left: 30px;
     padding-right: 30px;
- 
-    
     
     .categoryBox {
       height: 30px;
@@ -167,6 +164,7 @@ export const FAQ = () => {
       padding-left: 30px;
       padding-right: 30px;
     }
+
   `
   const ShowMore = styled.button`
     width: 88%;
@@ -196,17 +194,17 @@ export const FAQ = () => {
     transform: ${(props) => (props.clicked ? "scaleY(-1)" : "" )}`
   
   
-const LikeButton = () => {
-  const [liked, setLiked] = useState<boolean>(false);
-  const btnclick = () => {
-    setLiked(true);
+  const LikeButton = () => {
+    const [liked, setLiked] = useState<boolean>(false);
+    const btnclick = () => {
+      setLiked(true);
+    }
+    return (
+      <>
+        {liked ? 'You liked this.' : <button onClick={btnclick}>Like</button> }
+      </>
+    )
   }
-  return (
-    <>
-      {liked ? 'You liked this.' : <button onClick={btnclick}>Like</button> }
-    </>
-  )
-}
 
   return (
     <FAQcontainer>
