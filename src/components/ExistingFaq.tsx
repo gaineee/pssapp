@@ -42,11 +42,11 @@ export const ExistingFAQ = ( {id, place, category} : props)  => { // id: 각 qna
         <span>[{place} &gt; {category}]</span>
       </div>
       <div>Q. {q} </div>
-      <div className="answer active" id={id}>A. {a} </div>
+      <div className="answer " id={id}>A. {a} </div>
     </div>
   )
 }
-
+// active 단어
   /*
     return (
       <FAQWrap>

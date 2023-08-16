@@ -22,6 +22,6 @@
   font-size: 14px;
 }
 
-.answer.active {
+.active.answer {
   display: none;
 }

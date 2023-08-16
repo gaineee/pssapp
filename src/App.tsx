@@ -5,6 +5,7 @@ import React, {
 } from "react";
 import { FAQ } from "./components/FAQ";
 import { QNA } from "./components/QNA";
+import { Inquiry } from "./components/Inquiry"
 import "./App.css";
 import { H1 } from "./styled";
 import { Navbar } from "./components/Navbar";
@@ -21,6 +22,7 @@ function App() {
       <Navbar clicked={clicked} setHeader={setHeader} setClicked={setClicked} />
       {clicked === 1 ? <FAQ></FAQ> : false}
       {clicked === 2 ? <QNA></QNA> : false}
+      {clicked === 3 ? <Inquiry></Inquiry> : false}
     </div>
   );
 }
